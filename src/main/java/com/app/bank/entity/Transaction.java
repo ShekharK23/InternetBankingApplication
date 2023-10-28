@@ -25,7 +25,7 @@ public class Transaction {
 	private int transactionAmount;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "accountNumber")
+	@JoinColumn(name = "transactionNumber1")
 	private Account account;
 	
 }
