@@ -31,6 +31,7 @@ public class Account {
 	private int accountHolderAge;
 	private int accountBalance;
 	private String panNumber;
+	private String accountType;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "debitCardNumber")

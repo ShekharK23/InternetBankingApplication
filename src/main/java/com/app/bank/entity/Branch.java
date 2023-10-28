@@ -22,7 +22,7 @@ public class Branch {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int branchIFSC;
+	private long branchIFSC;
 	private String branchCity;
 	private String branchArea;
 	
