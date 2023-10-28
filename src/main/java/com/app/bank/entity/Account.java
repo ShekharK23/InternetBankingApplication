@@ -1,6 +1,7 @@
 package com.app.bank.entity;
 
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public class Account {
 	private CreditCard creditCard;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "policyNumber1")
+	@JoinColumn(name = "policyNumber")
 	private List<Policy> allPolicy;
 	
 	@OneToMany(cascade = CascadeType.ALL)
@@ -52,7 +53,7 @@ public class Account {
 	private List<Beneficiary> allBeneficiary;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "transactionNumber")
+	@JoinColumn(name = "transactionNumber1")
 	private List<Transaction> allTransactions;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
