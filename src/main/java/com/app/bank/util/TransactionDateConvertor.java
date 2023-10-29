@@ -13,7 +13,7 @@ public class TransactionDateConvertor {
 			int month = Integer.parseInt(arr[1]);
 			int date = Integer.parseInt(arr[0]);
 
-			LocalDate d1 = LocalDate.now();
+			LocalDate d1 = LocalDate.of(year,month,date);
 			return d1;
 		}
 		else return null;
