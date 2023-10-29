@@ -2,9 +2,7 @@ package com.app.bank.util;
 
 import java.time.LocalDate;
 
-import com.app.bank.entity.Policy;
-
-public class PolicyDateConverter {
+public class TransactionDateConvertor {
 	
 	public static LocalDate getDateFromString(String str) {
 
@@ -15,9 +13,10 @@ public class PolicyDateConverter {
 			int month = Integer.parseInt(arr[1]);
 			int date = Integer.parseInt(arr[0]);
 
-			LocalDate d1 = LocalDate.of(year, month, date);
+			LocalDate d1 = LocalDate.now();
 			return d1;
 		}
 		else return null;
 	}
 }
+

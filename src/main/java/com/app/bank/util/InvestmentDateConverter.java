@@ -2,10 +2,7 @@ package com.app.bank.util;
 
 import java.time.LocalDate;
 
-import com.app.bank.entity.Policy;
-
-public class PolicyDateConverter {
-	
+public class InvestmentDateConverter {
 	public static LocalDate getDateFromString(String str) {
 
 		String arr[] = str.split("-");

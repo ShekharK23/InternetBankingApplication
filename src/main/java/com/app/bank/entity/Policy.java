@@ -1,7 +1,6 @@
 package com.app.bank.entity;
 
 import javax.persistence.CascadeType;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +27,7 @@ public class Policy {
 	private String policyExpiryDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "policyNumber1")
+	@JoinColumn(name = "accountNumber")
 	private Account account;
 	
 }
