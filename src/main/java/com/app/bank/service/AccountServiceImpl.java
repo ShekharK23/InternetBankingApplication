@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.bank.entity.Account;
+import com.app.bank.entity.Investment;
 import com.app.bank.entity.Policy;
 import com.app.bank.entity.Transaction;
 import com.app.bank.repository.IAccountRepository;
+import com.app.bank.repository.IInvestmentRepository;
 import com.app.bank.repository.IPolicyRepository;
 import com.app.bank.repository.ITransactionRepository;
 
@@ -25,6 +27,9 @@ public class AccountServiceImpl implements IAccountService {
 	
 	@Autowired
 	IPolicyRepository policyRepository;
+	
+	@Autowired
+	IInvestmentRepository investmentRepository;
 	
 	@Override
 	public long saveAccounts(Account a) {
@@ -83,11 +88,26 @@ public class AccountServiceImpl implements IAccountService {
 //	public Account addBranchToAccount(long accNum, int branchIFSC) {
 //		return null;
 //	}
-//
-//	@Override
-//	public Account addInvestmentToAccount(long accNum, Investment investment) {
-//		return null;
-//	}
+
+	@Override
+	@Transactional
+	public String addInvestmentToAccount(long accNum,long investmentNum) {
+		String status = "";
+		Account a = accountRepository.findById(accNum).get();		
+		Investment i = investmentRepository.findById(investmentNum).get();
+		if(a != null && i != null)
+		{
+			List<Investment> allInvestments = a.getAllInvestment();
+			allInvestments.add(i);
+			a.setAllInvestment(allInvestments);
+			status = "Investment allocated , Investment Count : - "+ a.getAllInvestment().size();
+		}
+		else 
+		{
+			status = "Investment "+i+" or Account "+a+" Is not Valid.";
+		}
+		return status;
+	}
 
 	@Override
 	@Transactional
@@ -108,11 +128,13 @@ public class AccountServiceImpl implements IAccountService {
 		}
 		return status;
 	}
+	
 //	@Override
 //	public String allocateTransactionToAccount(long transactionId, long accNum) {
 //		return null;
 //	}
 //
+	
 	@Override
 	@Transactional
 	public String allocatePolicyToAccount(long accountNum, long policyNum) {
