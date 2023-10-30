@@ -26,7 +26,7 @@ public class Beneficiary {
 	private String benificiaryIFSCCode;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "accountNumber")
+	@JoinColumn(name = "accountNumberB")
 	private Account account;
 	
 }
