@@ -24,10 +24,10 @@ public class Policy {
 	private String policyName;
 	private int policyPremiumAmount;
 	private int policySumAssured;
-	private String policyExpireDate;
+	private String policyExpiryDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "accountNumberP")
+	@JoinColumn(name = "accountNumber")
 	private Account account;
 	
 }

@@ -1,20 +1,28 @@
 package com.app.bank.service;
 
+import java.time.LocalDate;	
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.bank.entity.Account;
 import com.app.bank.entity.Policy;
+import com.app.bank.repository.IAccountRepository;
 import com.app.bank.repository.IPolicyRepository;
+import com.app.bank.util.PolicyDateConverter;
 
 @Service
 public class PolicyServiceImpl implements IPolicyService {
 	
 	@Autowired
 	IPolicyRepository policyRepository;
+	
+	@Autowired
+	IAccountRepository accountRepository;
 
 	@Override
 	public long savePolicy(Policy policy) {
@@ -48,12 +56,27 @@ public class PolicyServiceImpl implements IPolicyService {
 	}
 
 	@Override
-	public Policy checkExpiryDate(long policyNumber) {
+	public String checkExpiryDate(long policyNumber) {
 		Policy savedPolicy = getPolicyByPolicyNumber(policyNumber);
 		if(savedPolicy!=null) {
+			LocalDate currentDate = LocalDate.now();
+			LocalDate expiryDate = PolicyDateConverter.getDateFromString(savedPolicy.getPolicyExpiryDate());
 			
+			if(currentDate.isAfter(expiryDate)) {
+				return "Policy is Expired";
+			}		
 		}
-		return null;
+		return "Policy is yet to Expired";
+	}
+	
+	@Override
+	@Transactional
+	public void deletePolicyForAccount(long accountNumber) {
+		Optional<Account> account = accountRepository.findById(accountNumber);
+        if (account.isPresent()) {
+            Account acc = account.get();
+            policyRepository.deleteByAccount(acc);
+        }
 	}
 
 }
