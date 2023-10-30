@@ -2,19 +2,29 @@ package com.app.bank.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.bank.entity.Account;
-import com.app.bank.entity.Beneficiary;
-import com.app.bank.entity.Investment;
+import com.app.bank.entity.Policy;
+import com.app.bank.entity.Transaction;
 import com.app.bank.repository.IAccountRepository;
+import com.app.bank.repository.IPolicyRepository;
+import com.app.bank.repository.ITransactionRepository;
 
 @Service
 public class AccountServiceImpl implements IAccountService {
 
 	@Autowired
 	IAccountRepository accountRepository;
+	
+	@Autowired
+	ITransactionRepository transactionRepository;
+	
+	@Autowired
+	IPolicyRepository policyRepository;
 	
 	@Override
 	public long saveAccounts(Account a) {
@@ -78,22 +88,49 @@ public class AccountServiceImpl implements IAccountService {
 //	public Account addInvestmentToAccount(long accNum, Investment investment) {
 //		return null;
 //	}
-//
+
+	@Override
+	@Transactional
+	public String allocateTransactionToAccount(long transactionNum, long accountNum) {
+		String status = "";
+		Account a = accountRepository.findById(accountNum).get();		
+		Transaction t = transactionRepository.findById(transactionNum).get();
+		if(a != null && t != null)
+		{
+			List<Transaction> allTransactions = a.getAllTransactions();
+			allTransactions.add(t);
+			a.setAllTransactions(allTransactions);
+			status = "Transaction allocated , Transaction Count : - "+ a.getAllTransactions().size();
+		}
+		else 
+		{
+			status = "Transaction "+t+" or Account "+a+" Is not Valid.";
+		}
+		return status;
+	}
 //	@Override
 //	public String allocateTransactionToAccount(long transactionId, long accNum) {
 //		return null;
 //	}
 //
-//	@Override
-//	public String allocatePolicyToAccount(long accNum, long policyNum) {
-////		Account savedAcc = getAccountByAccountNumber(accNum); // fetch employee from table 
-//		//Policy policy = policyRepository.findById(policyId).get();  // fetch insurance from table
-//		//if(savedAcc != null && policy != null) // if both are not null / exist in table
-//		//{
-//		//	savedAcc.setPolicy(policy);// call update query on employee table to add insurance
-//		//	return savedAcc;
-//		//}
-//		return null;
-//	}
+	@Override
+	@Transactional
+	public String allocatePolicyToAccount(long accountNum, long policyNum) {
+		String status = "";
+		Account a = accountRepository.findById(accountNum).get();		
+		Policy p = policyRepository.findById(policyNum).get();
+		if(a != null && p != null)
+		{
+			List<Policy> allPolicy = a.getAllPolicy();
+			allPolicy.add(p);
+			a.setAllPolicy(allPolicy);
+			status = "Policy allocated , Policy Count : - "+ a.getAllPolicy().size();
+		}
+		else 
+		{
+			status = "Policy "+p+" or Account "+a+" Is not Valid.";
+		}
+		return status;
+	}
 
 }

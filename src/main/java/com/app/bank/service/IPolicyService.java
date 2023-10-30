@@ -12,6 +12,5 @@ public interface IPolicyService {
 	public Policy getPolicyByPolicyNumber(long policyNumber);
 	public List<Policy> getAllPolicies();
 	public Policy updatePremiumAmountOfPolicyByPolicyNumber(long policyNumber, int newPremiumAmount);
-	public String checkExpiryDate(long policyNumber);
-	public void deletePolicyForAccount(long accountNumber);
+	public Policy checkExpiryDate(long policyNumber);
 }
