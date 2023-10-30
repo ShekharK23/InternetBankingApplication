@@ -11,6 +11,4 @@ import com.app.bank.entity.Account;
 public interface IAccountRepository extends JpaRepository<Account, Long>{
 
 	public List<Account> getAccountByAccountType(String accountType);
-//	public List<Account> getAccountByBranch(String branch);
-	
 }

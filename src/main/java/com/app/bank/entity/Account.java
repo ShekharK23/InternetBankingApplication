@@ -54,10 +54,10 @@ public class Account {
 	private List<Beneficiary> allBeneficiary;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "transactionNumber")
+	@JoinColumn(name = "transactionNumber1")
 	private List<Transaction> allTransactions;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "branchIFSC")
+	@JoinColumn(name = "branchIFSC1")
 	private Branch branch;
 }
