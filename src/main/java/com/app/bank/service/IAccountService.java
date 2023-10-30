@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.app.bank.entity.Account;
+import com.app.bank.entity.Investment;
 
 @Service
 public interface IAccountService {
@@ -21,7 +22,7 @@ public interface IAccountService {
 //	public Account addDebitCardToAccount(long accNum,long debitCardNum);
 //	public Account addCreditCardToAccount(long accNum,long creditCardNum);
 //	public Account addBranchToAccount(long accNum,int branchIFSC);
-//	public Account addInvestmentToAccount(long accNum,Investment investment);
+	public String addInvestmentToAccount(long accNum,long investmentNum);
 	public String allocateTransactionToAccount(long transactionId, long accNum);
 	public String allocatePolicyToAccount(long accNum, long policyNum);
 }

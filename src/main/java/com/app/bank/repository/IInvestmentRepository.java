@@ -8,5 +8,9 @@ import com.app.bank.entity.Investment;
 
 @Repository
 public interface IInvestmentRepository extends JpaRepository<Investment, Long> {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e8d56ca2aeb36ebed7025b125d2297485f05a6b
 	public void deleteByAccount(Account account);
 }

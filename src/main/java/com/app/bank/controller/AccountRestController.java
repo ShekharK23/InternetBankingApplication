@@ -82,4 +82,12 @@ public class AccountRestController {
 		return new ResponseEntity<String>(status, HttpStatus.OK);
 
 	}
+	
+	@PutMapping("/investmenttoacc") //working
+	public ResponseEntity<String> allocateInvestmentToAccount(@RequestParam long acId,@RequestParam long iId) {
+
+		String status = accountService.addInvestmentToAccount(acId, iId);
+		return new ResponseEntity<String>(status, HttpStatus.OK);
+
+	}
 }
