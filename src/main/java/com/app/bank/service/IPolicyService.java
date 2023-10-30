@@ -1,6 +1,6 @@
 package com.app.bank.service;
 
-import java.util.List;
+import java.util.List;	
 
 import org.springframework.stereotype.Service;
 
@@ -12,5 +12,6 @@ public interface IPolicyService {
 	public Policy getPolicyByPolicyNumber(long policyNumber);
 	public List<Policy> getAllPolicies();
 	public Policy updatePremiumAmountOfPolicyByPolicyNumber(long policyNumber, int newPremiumAmount);
-	public Policy checkExpiryDate(long policyNumber);
+	public String checkExpiryDate(long policyNumber);
+	public void deletePolicyForAccount(long accountNumber);
 }

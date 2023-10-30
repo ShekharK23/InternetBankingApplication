@@ -27,7 +27,7 @@ public class Policy {
 	private String policyExpiryDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "accountNumberP")
+	@JoinColumn(name = "accountNumber")
 	private Account account;
 	
 }

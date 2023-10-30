@@ -28,6 +28,6 @@ public class Investment {
 	private String fdMaturityDate;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "accountNumberI")
+	@JoinColumn(name = "accountNumber")
 	private Account account;
 }

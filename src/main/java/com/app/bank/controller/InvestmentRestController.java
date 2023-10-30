@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -57,5 +58,11 @@ public class InvestmentRestController {
 	public String checkMaturityDate(@RequestParam long fdNumber) {
 		String status = investmentService.checkMaturityDate(fdNumber);
 		return status;
+	}
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<String> deleteInvestmentForAccount(@RequestParam long accountNumber) {
+		investmentService.deleteInvestmentForAccount(accountNumber);
+		return ResponseEntity.ok("Investments For Account Number : "+accountNumber+" Deleted");
 	}
 }
