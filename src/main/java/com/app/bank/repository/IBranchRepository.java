@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.app.bank.entity.Branch;
 
 @Repository
-public interface IBranchRepository extends JpaRepository<Branch, Integer>{
+public interface IBranchRepository extends JpaRepository<Branch, Long>{
 
 }
