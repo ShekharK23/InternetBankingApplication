@@ -25,13 +25,13 @@ public class TransactionRestController {
 	@Autowired
 	ITransactionService transactionService;
 
-	@PostMapping("/save")
+	@PostMapping("/addTransaction")
 	public long saveTransaction(@RequestBody Transaction transaction) {
 		long transCode = transactionService.saveTransaction(transaction);
 		return transCode;
 	}
 
-	@GetMapping("/getById")
+	@GetMapping("/getTransactionById")
 	public ResponseEntity<Transaction> getTransactionById(@RequestParam long id) {
 		Transaction transSaved = transactionService.getTransactionById(id);
 		return new ResponseEntity<Transaction>(transSaved, HttpStatus.OK);
@@ -44,7 +44,7 @@ public class TransactionRestController {
 		return new ResponseEntity<List<Transaction>>(all, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/delete/{tid}")
+	@DeleteMapping("/deleteTransactionById/{tid}")
 	public String deleteTransactionById(@PathVariable long tid) {
 		System.out.println("Requested transaction for given ID is deleted");
 		transactionService.deleteTransactionById(tid);
@@ -52,19 +52,19 @@ public class TransactionRestController {
 
 	}
 	
-	@GetMapping("/sort")
+	@GetMapping("/getTransactionLowToHigh")
 	public ResponseEntity<List<Transaction>> findByOrderByTransactionAmount(){
 		List<Transaction>lowToHigh=transactionService.findByOrderByTransactionAmount();
 		return new ResponseEntity<List<Transaction>>(lowToHigh, HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/highToLow")
+	@GetMapping("/getTransactionHighToLow")
 	public ResponseEntity<List<Transaction>> findByOrderByTransactionAmountDesc(){
 		List<Transaction>highToLow=transactionService.findByOrderByTransactionAmountDesc();
 		return new ResponseEntity<List<Transaction>>(highToLow, HttpStatus.ACCEPTED);
 	}
 	
-	@GetMapping("/bydate")
+	@GetMapping("/byTransactionByDate")
 	public List<Transaction> getTransactionByTransactionDate(@RequestParam String td) {
 		List<Transaction> t=transactionService.getTransactionByTransactionDate(td);
 		return t;
