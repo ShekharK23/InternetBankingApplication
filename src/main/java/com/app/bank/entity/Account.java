@@ -42,11 +42,11 @@ public class Account {
 	private CreditCard creditCard;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "policyNumber")
+	@JoinColumn(name = "policyNumber1")
 	private List<Policy> allPolicy;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fdNumber")
+	@JoinColumn(name = "fdNumber1")
 	private List<Investment> allInvestment;
 	
 	@OneToMany(cascade = CascadeType.ALL)
@@ -58,6 +58,6 @@ public class Account {
 	private List<Transaction> allTransactions;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "branchIFSC")
+	@JoinColumn(name = "branchIFSC1")
 	private Branch branch;
 }
