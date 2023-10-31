@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 {
     "transactionNumber": 1,
     "transactionDate": "15-09-2010",
     "transactionAmount": 9000,
     "account": null
-=======
-{
-    "transactionNumber": 1,
-    "transactionDate": "15-09-2010",
-    "transactionAmount": 9000,
-    "account": null
->>>>>>> 7ef2464f9802c2f68997c33d5b457686e1833e4d
 }
