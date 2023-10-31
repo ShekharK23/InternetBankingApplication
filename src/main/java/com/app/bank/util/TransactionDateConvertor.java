@@ -1,22 +1,21 @@
 package com.app.bank.util;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class TransactionDateConvertor {
-	
-	public static LocalDate getDateFromString(String str) {
 
-		String arr[] = str.split("-");
+	public static String convertCurrentDateToString(String dateFormatPattern) {
+		LocalDate currentDate = LocalDate.now(); // Get the current date
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormatPattern);
+		return currentDate.format(formatter);
+	}
 
-		if (arr.length == 3) {
-			int year = Integer.parseInt(arr[2]);
-			int month = Integer.parseInt(arr[1]);
-			int date = Integer.parseInt(arr[0]);
+	public static void main(String[] args) {
+		String dateFormatPattern = "yyyy-MM-dd"; // The format pattern for the date
 
-			LocalDate d1 = LocalDate.now();
-			return d1;
-		}
-		else return null;
+		String currentDateAsString = convertCurrentDateToString(dateFormatPattern);
+
+		System.out.println("Current date as a string: " + currentDateAsString);
 	}
 }
-
