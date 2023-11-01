@@ -1,0 +1,15 @@
+    {
+        "accountNumber": 1,
+        "accountHolderName": "Shubham",
+        "accountHolderAge": 21,
+        "accountBalance": 2345,
+        "panNumber": "JAPG2345T",
+        "accountType": "Current",
+        "debitCard": null,
+        "creditCard": null,
+        "allPolicy": [],
+        "allInvestment": [],
+        "allBeneficiary": [],
+        "allTransactions": [],
+        "branch": null
+    }

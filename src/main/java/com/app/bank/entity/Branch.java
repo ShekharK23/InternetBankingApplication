@@ -22,11 +22,11 @@ public class Branch {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int branchIFSC;
+	private long branchIFSC;
 	private String branchCity;
 	private String branchArea;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "accountNumber")
+	@JoinColumn(name = "accountNumberBr")
 	private List<Account> allAccounts;
 }
