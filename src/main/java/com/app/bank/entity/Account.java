@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,17 +24,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(description = "Details about Account Bean")
 public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@ApiModelProperty(notes = "Unique Account Number of Account")
 	private long accountNumber;
+	@ApiModelProperty(notes = "Name of Account Holder")
 	private String accountHolderName;
 	private int accountHolderAge;
 	private int accountBalance;
 	private String panNumber;
+	@ApiModelProperty(notes = "Type of Account - Salaried, Savings, Current")
 	private String accountType;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "debitCardNumber")
 	private DebitCard debitCard;
