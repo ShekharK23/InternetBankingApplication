@@ -21,6 +21,8 @@ public class CreditCard {
 	private int creditCardPin;
 	private String creditCardExpiryDate;
 	private int creditCardLimit;
-	private boolean creditCardStatus;
+	
+	
+	private String creditCardStatus;
 	
 }

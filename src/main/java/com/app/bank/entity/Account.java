@@ -57,6 +57,6 @@ public class Account {
 	private List<Transaction> allTransactions;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "branchIFSC")
+	@JoinColumn(name = "branchIFSC1")
 	private Branch branch;
 }

@@ -21,6 +21,7 @@ public class DebitCard {
 	private int debitCardPin;
 	private String debitCardExpiryDate;
 	private int debitCardLimit;
-	private boolean debitCardStatus;
+	private String debitCardStatus; //allocated or not allocated
+	
 	
 }

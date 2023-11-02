@@ -1,0 +1,14 @@
+{
+    "debitCardPin":6756,
+   "debitCardExpiryDate":"2023,04,31",
+   "debitCardLimit":455,
+   "debitCardStatus":"pass"
+
+}
+{
+    "creditCardPin":123,
+    "creditCardExpiryDate":"2023-08-09",
+    "creditCardLimit":123,
+   "creditCardStatus":"pass"
+
+}
