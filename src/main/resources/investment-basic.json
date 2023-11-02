@@ -1,0 +1,9 @@
+{
+    "fdNumber": 1,
+    "fdAmount": 5467,
+    "fdInterestRate": 7.3,
+    "fdTermMonths": 12,
+    "fdStartDate": "30-12-2021",
+    "fdMaturityDate": "30-12-2022",
+    "account": null
+}

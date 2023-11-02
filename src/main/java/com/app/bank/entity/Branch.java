@@ -27,6 +27,6 @@ public class Branch {
 	private String branchArea;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "accountNumber")
+	@JoinColumn(name = "accountNumberbr")
 	private List<Account> allAccounts;
 }

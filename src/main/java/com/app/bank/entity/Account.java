@@ -49,7 +49,7 @@ public class Account {
 	private List<Investment> allInvestment;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "beneficiaryAccountNumber")
+	@JoinColumn(name = "beneficiaryAccountNumber1")
 	private List<Beneficiary> allBeneficiary;
 	
 	@OneToMany(cascade = CascadeType.ALL)
